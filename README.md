@@ -4,6 +4,30 @@ A generic Power Apps Component Framework control that lets users select records 
 
 The control supports existing parent records and selections made before the parent is saved for the first time.
 
+# Why this project?
+
+Dataverse already provides:
+
+- Lookup columns
+- Customer columns
+- PartyList columns
+- Native N:N relationships
+
+However, many business scenarios require something slightly different:
+
+- selecting records from different tables
+- storing additional information on the relationship
+- filtering by role
+- filtering by type
+- preserving selections before the parent record exists
+- using a modern multi-select UI
+
+This control fills that gap while remaining completely generic.
+
+No business logic is embedded in the code.
+
+Everything is configured through manifest properties.
+
 ## Features
 
 - Search two configurable Dataverse tables from one lookup-style field.
@@ -16,6 +40,23 @@ The control supports existing parent records and selections made before the pare
 - Optional cached display-name, type, and role columns.
 - Built-in configuration validation and user-visible runtime diagnostics.
 - Optional icons and placeholder.
+
+# Typical use cases
+
+This control can be used for many scenarios.
+
+Examples include:
+
+- Opportunity → Contacts + Leads
+- Event → Speakers + Sponsors
+- Project → Internal Users + External Contacts
+- Ticket → Customers + Suppliers
+- Visit → Contacts + Accounts
+- Marketing Campaign → Contacts + Leads
+- Meeting → Employees + Guests
+- Custom tables requiring role-based relationships
+
+Because the control relies only on configuration, no code changes are required.
 
 ## Architecture
 
@@ -128,31 +169,124 @@ This example lets users select Contacts and Leads from an Opportunity form.
 
 ### Example values
 
+The following example shows the exact values expected by the control.
+
+> **Important**
+> These values are **Dataverse metadata names**, not display names.
+
 ```text
-Junction table:              vxs_opportunityparty
-Junction primary ID:         vxs_opportunitypartyid
-Cached display name column:  vxs_name
+Junction table
+  Value : vxs_opportunityparty
+  Type  : Dataverse table logical name
 
-Parent table:                opportunity
-Parent entity set:           opportunities
-Parent navigation property:  vxs_opportunityloockup
+Junction primary ID
+  Value : vxs_opportunitypartyid
+  Type  : Primary Key column (Unique Identifier)
 
-Target 1 table:              contact
-Target 1 entity set:         contacts
-Target 1 primary ID:         contactid
-Target 1 primary name:       fullname
-Target 1 navigation property:vxs_contactloockup
-Target 1 label:              Contact
+Cached display name column
+  Value : vxs_name
+  Type  : Single Line of Text column (optional)
 
-Target 2 table:              lead
-Target 2 entity set:         leads
-Target 2 primary ID:         leadid
-Target 2 primary name:       fullname
-Target 2 navigation property:vxs_leadloockup
-Target 2 label:              Lead
+
+Parent table
+  Value : opportunity
+  Type  : Dataverse table logical name
+
+Parent entity set
+  Value : opportunities
+  Type  : OData Entity Set name
+
+Parent navigation property
+  Value : vxs_opportunityloockup
+  Type  : Lookup navigation property on the junction table
+
+
+Target 1 table
+  Value : contact
+  Type  : Dataverse table logical name
+
+Target 1 entity set
+  Value : contacts
+  Type  : OData Entity Set name
+
+Target 1 primary ID
+  Value : contactid
+  Type  : Primary Key column (Unique Identifier)
+
+Target 1 primary name
+  Value : fullname
+  Type  : Primary Name column (Single Line of Text)
+
+Target 1 navigation property
+  Value : vxs_contactloockup
+  Type  : Lookup navigation property on the junction table
+
+Target 1 label
+  Value : Contact
+  Type  : Free text shown in the control
+
+
+Target 2 table
+  Value : lead
+  Type  : Dataverse table logical name
+
+Target 2 entity set
+  Value : leads
+  Type  : OData Entity Set name
+
+Target 2 primary ID
+  Value : leadid
+  Type  : Primary Key column (Unique Identifier)
+
+Target 2 primary name
+  Value : fullname
+  Type  : Primary Name column (Single Line of Text)
+
+Target 2 navigation property
+  Value : vxs_leadloockup
+  Type  : Lookup navigation property on the junction table
+
+Target 2 label
+  Value : Lead
+  Type  : Free text shown in the control
 ```
 
-The example deliberately shows the exact metadata names used in the test environment. Never correct or infer a spelling: copy the values exactly from Dataverse metadata.
+### Dataverse column types used in this example
+
+| Dataverse object | Expected type |
+|------------------|---------------|
+| Junction table | Table |
+| Parent table | Table |
+| Target table | Table |
+| Junction primary ID | Unique Identifier (Primary Key) |
+| Cached display name | Single Line of Text |
+| Parent navigation property | Lookup relationship |
+| Target navigation property | Lookup relationship |
+| Parent entity set | OData Entity Set |
+| Target entity set | OData Entity Set |
+| Target primary ID | Unique Identifier (Primary Key) |
+| Target primary name | Primary Name (Single Line of Text) |
+| Target label | Text displayed in the UI (not stored in Dataverse) |
+
+# Screenshots
+
+## Empty control
+
+![Empty control with dropdown](image.png)
+
+---
+
+## Search results
+
+![Search results](image-1.png)
+
+---
+
+## Selected items
+
+![Selected items](image-2.png)
+
+---
 
 ## Finding navigation-property names
 
@@ -271,7 +405,3 @@ The solution ZIP is generated under `solution/bin/Release`.
 - New unsaved parent selections persist after the first save.
 - Empty placeholder and icons are tested.
 - Invalid configuration displays an actionable diagnostic.
-
-## License
-
-Add the license selected for the public repository before publishing the first GitHub release. MIT is a common choice for community PCF controls.
