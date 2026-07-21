@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<manifest>
+  <control namespace="CommunityPCF" constructor="MultiJunctionLookup" version="1.0.1" display-name-key="Multi Junction Lookup" description-key="Generic multi-table lookup backed by a Dataverse junction table" control-type="standard">
+    <external-service-usage enabled="false" />
+
+    <property name="value" display-name-key="Pending value" description-key="Bound text field used to preserve selections before the parent record is first saved" of-type="SingleLine.Text" usage="bound" required="true" />
+
+    <property name="junctionTableName" display-name-key="Junction table" description-key="Logical name of the junction table" of-type="SingleLine.Text" usage="input" required="true" />
+    <property name="junctionPrimaryIdColumn" display-name-key="Junction primary ID" description-key="Logical name of the junction table primary ID column" of-type="SingleLine.Text" usage="input" required="true" />
+    <property name="junctionNameColumn" display-name-key="Cached display name column" description-key="Optional text column in the junction table used to cache the selected record name" of-type="SingleLine.Text" usage="input" required="false" />
+    <property name="junctionTypeColumn" display-name-key="Junction type column" description-key="Optional choice or number column used to identify the selected target table" of-type="SingleLine.Text" usage="input" required="false" />
+    <property name="junctionRoleColumn" display-name-key="Junction role column" description-key="Optional choice or number column used to isolate several lookup roles" of-type="SingleLine.Text" usage="input" required="false" />
+    <property name="junctionRoleValue" display-name-key="Junction role value" description-key="Optional numeric role value" of-type="Whole.None" usage="input" required="false" />
+
+    <property name="parentTableName" display-name-key="Parent table" description-key="Logical name of the table hosting the control" of-type="SingleLine.Text" usage="input" required="true" />
+    <property name="parentEntitySetName" display-name-key="Parent entity set" description-key="Entity set name used by OData for the parent table" of-type="SingleLine.Text" usage="input" required="true" />
+    <property name="parentLookupColumn" display-name-key="Parent navigation property" description-key="Dataverse Web API navigation property of the parent lookup in the junction table; this is usually the lookup logical name but must match metadata exactly" of-type="SingleLine.Text" usage="input" required="true" />
+
+    <property name="target1TableName" display-name-key="Target 1 table" description-key="Logical name of the first selectable table" of-type="SingleLine.Text" usage="input" required="true" />
+    <property name="target1EntitySetName" display-name-key="Target 1 entity set" description-key="Entity set name used by OData for the first table" of-type="SingleLine.Text" usage="input" required="true" />
+    <property name="target1PrimaryIdColumn" display-name-key="Target 1 primary ID" description-key="Logical name of the first table primary ID column" of-type="SingleLine.Text" usage="input" required="true" />
+    <property name="target1PrimaryNameColumn" display-name-key="Target 1 primary name" description-key="Logical name of the first table search and display column" of-type="SingleLine.Text" usage="input" required="true" />
+    <property name="target1LookupColumn" display-name-key="Target 1 navigation property" description-key="Dataverse Web API navigation property of the first target lookup in the junction table; this is usually the lookup logical name but must match metadata exactly" of-type="SingleLine.Text" usage="input" required="true" />
+    <property name="target1DisplayLabel" display-name-key="Target 1 label" description-key="Optional user-facing label" of-type="SingleLine.Text" usage="input" required="false" />
+    <property name="target1Icon" display-name-key="Target 1 icon" description-key="Optional icon: person, building or generic" of-type="SingleLine.Text" usage="input" required="false" />
+    <property name="target1AllowCreate" display-name-key="Allow target 1 creation" description-key="Allow quick creation for the first table" of-type="TwoOptions" usage="input" required="false" default-value="false" />
+    <property name="target1TypeValue" display-name-key="Target 1 type value" description-key="Optional numeric value written to the junction type column" of-type="Whole.None" usage="input" required="false" />
+
+    <property name="target2TableName" display-name-key="Target 2 table" description-key="Logical name of the second selectable table" of-type="SingleLine.Text" usage="input" required="true" />
+    <property name="target2EntitySetName" display-name-key="Target 2 entity set" description-key="Entity set name used by OData for the second table" of-type="SingleLine.Text" usage="input" required="true" />
+    <property name="target2PrimaryIdColumn" display-name-key="Target 2 primary ID" description-key="Logical name of the second table primary ID column" of-type="SingleLine.Text" usage="input" required="true" />
+    <property name="target2PrimaryNameColumn" display-name-key="Target 2 primary name" description-key="Logical name of the second table search and display column" of-type="SingleLine.Text" usage="input" required="true" />
+    <property name="target2LookupColumn" display-name-key="Target 2 navigation property" description-key="Dataverse Web API navigation property of the second target lookup in the junction table; this is usually the lookup logical name but must match metadata exactly" of-type="SingleLine.Text" usage="input" required="true" />
+    <property name="target2DisplayLabel" display-name-key="Target 2 label" description-key="Optional user-facing label" of-type="SingleLine.Text" usage="input" required="false" />
+    <property name="target2Icon" display-name-key="Target 2 icon" description-key="Optional icon: person, building or generic" of-type="SingleLine.Text" usage="input" required="false" />
+    <property name="target2AllowCreate" display-name-key="Allow target 2 creation" description-key="Allow quick creation for the second table" of-type="TwoOptions" usage="input" required="false" default-value="false" />
+    <property name="target2TypeValue" display-name-key="Target 2 type value" description-key="Optional numeric value written to the junction type column" of-type="Whole.None" usage="input" required="false" />
+
+    <property name="minimumSearchLength" display-name-key="Minimum search length" description-key="Minimum number of characters before searching" of-type="Whole.None" usage="input" required="false" default-value="3" />
+    <property name="placeholder" display-name-key="Placeholder" description-key="Optional input placeholder" of-type="SingleLine.Text" usage="input" required="false" />
+
+    <resources>
+      <code path="index.ts" order="1" />
+      <css path="src/styles/MultiPartyLookup.css" order="1" />
+    </resources>
+
+    <feature-usage>
+      <uses-feature name="WebAPI" required="true" />
+    </feature-usage>
+  </control>
+</manifest>

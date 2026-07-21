@@ -1,0 +1,227 @@
+.mjl {
+    width: 100%;
+    font-family: "Segoe UI", Arial, sans-serif;
+    font-size: 14px;
+    position: relative;
+    box-sizing: border-box;
+    overflow: visible;
+}
+
+.mjl-field {
+    width: 100%;
+    min-height: 32px;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 4px;
+    padding: 3px 28px 3px 4px;
+    background: #f5f5f5;
+    box-sizing: border-box;
+    position: relative;
+}
+
+.mjl-field:focus-within {
+    box-shadow: inset 0 -2px 0 #0078d4;
+}
+
+.mjl-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    height: 22px;
+    background: #e5f1fb;
+    color: #115ea3;
+    padding: 0 6px;
+    border-radius: 2px;
+    line-height: 22px;
+    white-space: nowrap;
+}
+
+.mjl-remove {
+    border: 0;
+    background: transparent;
+    cursor: pointer;
+    color: #115ea3;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+}
+
+.mjl-input {
+    flex: 1;
+    min-width: 180px;
+    height: 24px;
+    border: 0;
+    outline: none;
+    background: transparent;
+    font-family: "Segoe UI", Arial, sans-serif;
+    font-size: 14px;
+}
+
+.mjl-search-icon {
+    position: absolute;
+    right: 8px;
+    bottom: 5px;
+    color: #605e5c;
+    font-size: 18px;
+    pointer-events: none;
+}
+
+.mjl-dropdown {
+    position: absolute;
+    z-index: 9999999;
+    background: #ffffff;
+    border: 1px solid #d0d0d0;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    max-height: 260px;
+    overflow-y: auto;
+}
+
+.mjl-result {
+    width: 100%;
+    border: 0;
+    background: white;
+    text-align: left;
+    padding: 8px;
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    cursor: pointer;
+    font-family: "Segoe UI", Arial, sans-serif;
+    font-size: 14px;
+}
+
+.mjl-result:hover {
+    background: #f3f2f1;
+}
+
+.mjl-icon {
+    width: 16px;
+    height: 16px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: #115ea3;
+}
+
+.mjl-loading {
+    font-size: 12px;
+    color: #605e5c;
+    padding: 2px 4px;
+}
+
+.mjl-info {
+    font-size: 12px;
+    color: #605e5c;
+    padding: 2px 4px;
+}
+
+.mjl-link {
+    color: #115ea3;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.mjl-link:hover {
+    text-decoration: underline;
+}
+
+.mjl-separator {
+    height: 1px;
+    background: #edebe9;
+    margin: 4px 0;
+}
+
+.mjl-create {
+    width: 100%;
+    border: 0;
+    background: #ffffff;
+    text-align: left;
+    padding: 8px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    font-family: "Segoe UI", Arial, sans-serif;
+    font-size: 14px;
+    color: #115ea3;
+}
+
+.mjl-create:hover {
+    background: #f3f2f1;
+}
+
+.mjl-create svg {
+    width: 16px;
+    height: 16px;
+}
+.mjl-field-disabled {
+    opacity: 0.65;
+}
+
+.mjl-diagnostic {
+    margin-bottom: 6px;
+    border: 1px solid;
+    border-radius: 2px;
+    padding: 8px;
+    font-size: 12px;
+    line-height: 1.4;
+    background: #ffffff;
+}
+
+.mjl-diagnostic-error {
+    border-color: #d13438;
+    background: #fde7e9;
+    color: #751d20;
+}
+
+.mjl-diagnostic-warning {
+    border-color: #f2c811;
+    background: #fff4ce;
+    color: #5c4400;
+}
+
+.mjl-diagnostic-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    margin-bottom: 4px;
+}
+
+.mjl-diagnostic-title {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-weight: 600;
+}
+
+.mjl-diagnostic-dismiss {
+    border: 0;
+    background: transparent;
+    color: inherit;
+    cursor: pointer;
+    padding: 0;
+    display: inline-flex;
+}
+
+.mjl-diagnostic-item + .mjl-diagnostic-item {
+    margin-top: 6px;
+    padding-top: 6px;
+    border-top: 1px solid currentColor;
+}
+
+.mjl-diagnostic-details {
+    margin-top: 4px;
+}
+
+.mjl-diagnostic-details pre {
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+    margin: 4px 0 0;
+    max-height: 140px;
+    overflow: auto;
+    font-family: Consolas, "Courier New", monospace;
+    font-size: 11px;
+}
