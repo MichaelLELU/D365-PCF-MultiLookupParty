@@ -1,3 +1,11 @@
+![PCF](https://img.shields.io/badge/Power%20Apps-PCF-blue)
+![Dataverse](https://img.shields.io/badge/Dataverse-Compatible-success)
+![React](https://img.shields.io/badge/React-19-61DAFB)
+![TypeScript](https://img.shields.io/badge/TypeScript-5-blue)
+![MIT License](https://img.shields.io/badge/License-MIT-green)
+![GitHub stars](https://img.shields.io/github/stars/USER/REPOSITORY?style=social)
+
+
 # Multi Junction Lookup PCF
 
 A generic Power Apps Component Framework control that lets users select records from two Dataverse tables in one field. Each selection is persisted as a row in a configurable junction table.
