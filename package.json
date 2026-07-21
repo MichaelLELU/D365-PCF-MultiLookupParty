@@ -2,6 +2,8 @@
   "name": "multi-junction-lookup-pcf",
   "version": "1.0.1",
   "description": "Generic Dataverse PCF multi-table lookup backed by a junction table.",
+  "author": "Michael LELU",
+  "license": "MIT",
   "scripts": {
     "build": "pcf-scripts build",
     "clean": "pcf-scripts clean",

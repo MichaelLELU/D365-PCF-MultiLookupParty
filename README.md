@@ -405,3 +405,7 @@ The solution ZIP is generated under `solution/bin/Release`.
 - New unsaved parent selections persist after the first save.
 - Empty placeholder and icons are tested.
 - Invalid configuration displays an actionable diagnostic.
+
+## License
+
+This project is licensed under the [MIT License](LICENSE).
